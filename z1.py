@@ -1,20 +1,17 @@
 # найти последовательность с максимальным GC содержанием в FASTA файле
 
 def read_fasta(filename):
-    # словарь для хранения id: последовательность
     seqs = {}
-    id_now = None  # id последовательности, которую сейчас читаем
+    id_now = None 
 
     with open(filename) as f:
         for line in f:
-            line = line.strip()  # убираем \n в конце строки
+            line = line.strip() 
 
             if line.startswith(">"):
-                id_now = line[1:]  # убираем символ > из начала
+                id_now = line[1:] 
                 seqs[id_now] = ""
             else:
-                # это часть последовательности, дописываем её к предыдущей
-                # (в FASTA последовательность может идти в несколько строк)
                 seqs[id_now] = seqs[id_now] + line
 
     return seqs

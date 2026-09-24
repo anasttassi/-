@@ -4,7 +4,7 @@ def read_two_arrays(filename):
     with open(filename, "r") as f:
         lines = f.readlines()
 
-    # lines[0] - это n (длина A), нам она реально не нужна, но строку надо пропустить
+    # lines[0] - это n (длина A), строку надо пропустить
     # lines[1] - сам массив A
     a_numbers = lines[1].strip().split()
     array_a = [int(x) for x in a_numbers]
@@ -21,7 +21,6 @@ def merge_sorted_arrays(a, b):
     i = 0  # указатель на текущую позицию в массиве a
     j = 0  # указатель на текущую позицию в массиве b
 
-    # пока в ОБОИХ массивах ещё остались непросмотренные элементы
     while i < len(a) and j < len(b):
         if a[i] <= b[j]:
             result.append(a[i])
@@ -29,9 +28,6 @@ def merge_sorted_arrays(a, b):
         else:
             result.append(b[j])
             j = j + 1
-
-    # на этом месте один из массивов уже закончился
-    # дописываем в результат весь остаток того массива, где ещё что-то осталось
 
     while i < len(a):
         result.append(a[i])
@@ -48,6 +44,5 @@ array_a, array_b = read_two_arrays(file_name)
 
 merged = merge_sorted_arrays(array_a, array_b)
 
-# переводим числа в строки, чтобы склеить их через пробел
 merged_str = [str(x) for x in merged]
 print(" ".join(merged_str))

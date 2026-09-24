@@ -24,15 +24,13 @@ def read_rna(filename):
     return rna
 
 def translate(rna):
-    protein = ""  # сюда будем накапливать буквы аминокислот
+    protein = "" 
 
-    # идём по строке rna шагами по 3 символа
     for i in range(0, len(rna), 3):
-        codon = rna[i:i + 3]  # берём очередной кодон - кусочек из 3 букв
-        amino_acid = codon_table[codon]  # находим аминокислоту по таблице
+        codon = rna[i:i + 3] 
+        amino_acid = codon_table[codon]
 
         if amino_acid == "Stop":
-            # встретили стоп-кодон - дальше не читаем и не добавляем его в белок
             break
 
         protein = protein + amino_acid
